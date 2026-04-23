@@ -454,12 +454,23 @@ document.getElementById("keypad").addEventListener("click", (e) => {
     return;
   }
 
-  // ── CPT (uses last TVM panel if open) ────────────
+  // ── CPT / 2ND+CPT (QUIT = reset display to 0) ────
   if (action === "cpt") {
-    consume2nd();
-    if (!tvmPanel.hidden) setStatus("TVM", "Use CPT buttons above");
-    else if (!cfPanel.hidden) setStatus("CF", "Use CPT buttons above");
-    else setStatus("", "Open TVM or CF first");
+    if (consume2nd()) {
+      // 2ND + CPT → QUIT: close panels, reset display to 0
+      expression = "0";
+      lastResult  = 0;
+      tvmPanel.hidden   = true;
+      cfPanel.hidden    = true;
+      regOverlay.hidden = true;
+      setScreen("0");
+      setExpr("");
+      setStatus("", "QUIT");
+    } else {
+      if (!tvmPanel.hidden) setStatus("TVM", "Use CPT buttons above");
+      else if (!cfPanel.hidden) setStatus("CF", "Use CPT buttons above");
+      else setStatus("", "Open TVM or CF first");
+    }
     return;
   }
 
