@@ -1,0 +1,248 @@
+:root {
+  --bg-ink: #08151d;
+  --bg-steel: #0f2735;
+  --bg-card: #132f40;
+  --accent: #f4b34f;
+  --accent-soft: #ffdca6;
+  --text-main: #edf5fb;
+  --text-dim: #a8bac8;
+  --ok: #8ce3a7;
+  --danger: #ff8a8a;
+  --shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", sans-serif;
+  background:
+    radial-gradient(circle at 20% 15%, #19435c 0%, transparent 45%),
+    radial-gradient(circle at 85% 70%, #1f5a49 0%, transparent 35%),
+    linear-gradient(150deg, var(--bg-ink), #04090d 65%);
+  color: var(--text-main);
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1rem;
+}
+
+.calculator {
+  width: min(920px, 100%);
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 1.25rem;
+  background: linear-gradient(165deg, rgba(17, 43, 58, 0.96), rgba(8, 25, 36, 0.96));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.2rem;
+  padding: 1.2rem;
+  box-shadow: var(--shadow);
+}
+
+.calculator-header {
+  grid-column: 1 / -1;
+  padding: 0.3rem 0.35rem;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-soft);
+  font-size: 0.74rem;
+}
+
+.calculator-header h1 {
+  margin: 0.2rem 0 0;
+  font-size: clamp(1.2rem, 2.2vw, 1.85rem);
+}
+
+.subtext {
+  margin: 0.2rem 0 0;
+  color: var(--text-dim);
+  font-size: 0.94rem;
+}
+
+.screen-wrap {
+  grid-column: 1 / -1;
+  background: linear-gradient(180deg, #0a1b28, #0d2331);
+  border: 1px solid rgba(244, 179, 79, 0.2);
+  border-radius: 0.9rem;
+  padding: 0.65rem 0.9rem;
+}
+
+.status-row {
+  min-height: 1.2rem;
+  color: var(--accent-soft);
+  font-size: 0.82rem;
+}
+
+.screen {
+  display: block;
+  width: 100%;
+  min-height: 2.7rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  text-align: right;
+  letter-spacing: 0.02em;
+  word-break: break-all;
+}
+
+.tvm-panel,
+.keypad {
+  background: linear-gradient(175deg, #102a3a, #0d2432);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+  padding: 0.85rem;
+}
+
+.tvm-panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 0.98rem;
+}
+
+.tvm-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.tvm-grid label {
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  display: grid;
+  gap: 0.22rem;
+}
+
+.tvm-grid label:last-child {
+  grid-column: 1 / -1;
+}
+
+.tvm-grid input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.5rem;
+  background: rgba(4, 12, 18, 0.8);
+  color: var(--text-main);
+  padding: 0.48rem 0.56rem;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.tvm-grid input:focus {
+  outline: 2px solid rgba(244, 179, 79, 0.35);
+  border-color: transparent;
+}
+
+.tvm-actions {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.52rem;
+}
+
+.keypad {
+  display: grid;
+  gap: 0.52rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.52rem;
+}
+
+.key {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, #15384d, #0f2c3d);
+  color: var(--text-main);
+  border-radius: 0.6rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  min-height: 2.55rem;
+  cursor: pointer;
+  transition: transform 120ms ease, filter 120ms ease;
+}
+
+.key:hover,
+.key:focus-visible {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.key:active {
+  transform: translateY(0);
+  filter: brightness(0.97);
+}
+
+.key.op {
+  background: linear-gradient(180deg, #3b3a2f, #282419);
+}
+
+.key.func {
+  background: linear-gradient(180deg, #2d3f48, #1d2a32);
+}
+
+.key.mode {
+  background: linear-gradient(180deg, #4a5d2b, #30401b);
+}
+
+.key.eq {
+  background: linear-gradient(180deg, #6f4a17, #4f330e);
+  color: #fff7e9;
+}
+
+.key.alt {
+  min-height: 2.15rem;
+  font-size: 0.82rem;
+  background: linear-gradient(180deg, #154a57, #103641);
+}
+
+@media (max-width: 860px) {
+  .calculator {
+    grid-template-columns: 1fr;
+  }
+
+  .tvm-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tvm-grid label:last-child {
+    grid-column: auto;
+  }
+
+  .tvm-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .app-shell {
+    padding: 0.75rem;
+  }
+
+  .calculator {
+    padding: 0.75rem;
+    border-radius: 1rem;
+  }
+
+  .key {
+    min-height: 2.7rem;
+    font-size: 0.95rem;
+  }
+
+  .key.alt {
+    min-height: 2.3rem;
+  }
+
+  .screen {
+    min-height: 2.2rem;
+    font-size: 1.45rem;
+  }
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BA II Plus Web Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="calculator" aria-label="BA II Plus Calculator">
+        <header class="calculator-header">
+          <p class="eyebrow">Proflex Tools</p>
+          <h1>BA II Plus Calculator</h1>
+          <p class="subtext">Basic math + TVM solve mode</p>
+        </header>
+
+        <div class="screen-wrap">
+          <div class="status-row" id="statusRow">Mode: Basic</div>
+          <output class="screen" id="screen" aria-live="polite">0</output>
+        </div>
+
+        <section class="tvm-panel" aria-label="Time Value of Money Inputs">
+          <h2>TVM Inputs</h2>
+          <div class="tvm-grid">
+            <label>
+              N
+              <input id="n" type="number" inputmode="decimal" placeholder="Periods" />
+            </label>
+            <label>
+              I/Y (%)
+              <input id="iy" type="number" inputmode="decimal" placeholder="Annual rate" />
+            </label>
+            <label>
+              PV
+              <input id="pv" type="number" inputmode="decimal" placeholder="Present value" />
+            </label>
+            <label>
+              PMT
+              <input id="pmt" type="number" inputmode="decimal" placeholder="Payment" />
+            </label>
+            <label>
+              FV
+              <input id="fv" type="number" inputmode="decimal" placeholder="Future value" />
+            </label>
+          </div>
+          <div class="tvm-actions">
+            <button class="key alt" data-action="compute" data-target="n">CPT N</button>
+            <button class="key alt" data-action="compute" data-target="iy">CPT I/Y</button>
+            <button class="key alt" data-action="compute" data-target="pv">CPT PV</button>
+            <button class="key alt" data-action="compute" data-target="pmt">CPT PMT</button>
+            <button class="key alt" data-action="compute" data-target="fv">CPT FV</button>
+          </div>
+        </section>
+
+        <section class="keypad" aria-label="Calculator keypad">
+          <div class="row">
+            <button class="key mode" data-action="toggleMode">MODE</button>
+            <button class="key mode" data-action="clearAll">2ND CLR TVM</button>
+            <button class="key func" data-action="backspace">DEL</button>
+            <button class="key func" data-action="clearEntry">CE/C</button>
+          </div>
+          <div class="row">
+            <button class="key func" data-action="openParen">(</button>
+            <button class="key func" data-action="closeParen">)</button>
+            <button class="key op" data-value="/">÷</button>
+            <button class="key op" data-value="*">×</button>
+          </div>
+          <div class="row">
+            <button class="key" data-value="7">7</button>
+            <button class="key" data-value="8">8</button>
+            <button class="key" data-value="9">9</button>
+            <button class="key op" data-value="-">−</button>
+          </div>
+          <div class="row">
+            <button class="key" data-value="4">4</button>
+            <button class="key" data-value="5">5</button>
+            <button class="key" data-value="6">6</button>
+            <button class="key op" data-value="+">+</button>
+          </div>
+          <div class="row">
+            <button class="key" data-value="1">1</button>
+            <button class="key" data-value="2">2</button>
+            <button class="key" data-value="3">3</button>
+            <button class="key eq" data-action="equals">=</button>
+          </div>
+          <div class="row">
+            <button class="key" data-value="0">0</button>
+            <button class="key" data-value=".">.</button>
+            <button class="key func" data-action="plusMinus">+/-</button>
+            <button class="key func" data-action="percent">%</button>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
